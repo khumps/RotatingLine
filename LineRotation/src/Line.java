@@ -1,12 +1,15 @@
-
 public class Line extends Polygon {
+	private int length;
+	private Point end1;
+	private Point end2;
 
-	public Line(PolarCoord) {
-		super();
+	public Line(PolarCoord center, int length) {
+		super(center);
+		this.length = length;
 	}
-	
-	public void rotation(double degrees)
-	{
+
+	@Override
+	public void rotate(double degrees) {
 		
 	}
 
