@@ -1,10 +1,10 @@
 public abstract class Polygon {
 	private double orientation = 0; //Current rotation of the Polygon
-	private final PolarCoord center;
-	private final PolarCoord[] endPoints;
-	public Polygon(PolarCoord center, PolarCoord... coords) {
+	private final Point center;
+	private final Point[] endPoints;
+	public Polygon(Point center, Point... endPoints) {
 		this.center = center;
-		this.endPoints = coords;
+		this.endPoints = endPoints;
 	}
 	
 	public abstract void rotate(double degrees);
