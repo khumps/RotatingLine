@@ -5,6 +5,8 @@ import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -40,13 +42,13 @@ public class Display extends JPanel {
 		g.gridy = 0;
 		panel.add(rotate, g);
 		
-		JButton rotatecc = new JButton("Rotate Clockwise");
+		JButton rotatecc = new JButton("Rotate Counter - Clockwise");
 		g.gridx = 1;
 		g.gridy = 0;
 		panel.add(rotatecc, g);
 		
 		JButton stop = new JButton("Stop");
-		g.gridx = 3;
+		g.gridx = 2;
 		g.gridy = 0;
 		panel.add(stop, g);
 		
@@ -54,6 +56,37 @@ public class Display extends JPanel {
 		f.getContentPane().add(line, BorderLayout.CENTER);
 		f.getContentPane().add(panel, BorderLayout.NORTH);
 		f.pack();
+		
+		class Rotate implements ActionListener{
+			public void actionPerformed(ActionEvent e){
+				JFrame f = new JFrame("ClockWise");
+				f.setVisible(true);
+				f.setSize(200,50);
+				
+			}
+		}
+		
+		rotate.addActionListener(new Rotate());
+		
+		class RotateCC implements ActionListener{
+			public void actionPerformed(ActionEvent e){
+				JFrame f = new JFrame("Counter ClockWise");
+				f.setVisible(true);
+				f.setSize(200,50);
+			}			
+		}
+		
+		rotatecc.addActionListener(new RotateCC());
+		
+		class Stop implements ActionListener{
+			public void actionPerformed(ActionEvent e){
+				JFrame f = new JFrame("Stop");
+				f.setVisible(true);
+				f.setSize(200,50);
+			}
+		}
+		
+		stop.addActionListener(new Stop());
 	}
 }
 
