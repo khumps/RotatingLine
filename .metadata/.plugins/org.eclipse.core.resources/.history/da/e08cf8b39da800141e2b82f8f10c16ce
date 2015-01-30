@@ -1,0 +1,17 @@
+import java.awt.Dimension;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+
+
+public class Display {
+	public static void main(String[] args) {
+		JFrame f = new JFrame("Line Rotator");
+		f.setVisible(true);
+		f.setPreferredSize(new Dimension(400,400));
+		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		JButton start = new JButton("Start");
+		f.getContentPane().add(start);
+		f.pack();
+	}
+}
