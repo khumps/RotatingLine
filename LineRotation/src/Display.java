@@ -10,51 +10,73 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
+import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 
 
 public class Display extends JPanel {
 	
+	static int frameWidth = 800;
+	static int frameHeight = 600;
+	
+	public int getFrameWidth() {
+		return frameWidth;
+	}
+
+	public void setFrameWidth(int frameWidth) {
+		this.frameWidth = frameWidth;
+	}
+
+	public int getFrameHeight() {
+		return frameHeight;
+	}
+
+	public void setFrameHeight(int frameHeight) {
+		this.frameHeight = frameHeight;
+	}
+
 	public void drawing(){
 		repaint();
 	}
 	
 	public void paintComponent(Graphics g){
 		g.setColor(Color.BLUE);
-		g.drawLine(0,0,400,400);
+		g.drawLine(0,0,frameWidth,frameHeight - 50);
+
 	}
 	
 	public static void main(String[] args) {
+		
+		JFrame.setDefaultLookAndFeelDecorated(true);
 		JFrame f = new JFrame("Line Rotator");
+		f.setResizable(false);
 		f.setVisible(true);
-		f.setPreferredSize(new Dimension(400,400));
+		f.setPreferredSize(new Dimension(frameWidth,frameHeight));
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	
-		JPanel panel = new JPanel(new GridBagLayout());
+		JPanel p = new JPanel(new GridBagLayout());
+
 		GridBagConstraints g = new GridBagConstraints();
 		g.gridheight = 1;
 		g.gridwidth = 1;
 		g.insets = new Insets(0,0,0,0);
 		
+		JMenuBar m = new JMenuBar();
 		JButton rotate = new JButton("Rotate Clockwise");
-		g.gridx = 0;
-		g.gridy = 0;
-		panel.add(rotate, g);
-		
+		m.add(rotate);
+
 		JButton rotatecc = new JButton("Rotate Counter - Clockwise");
-		g.gridx = 1;
-		g.gridy = 0;
-		panel.add(rotatecc, g);
+		m.add(rotatecc);
 		
 		JButton stop = new JButton("Stop");
-		g.gridx = 2;
-		g.gridy = 0;
-		panel.add(stop, g);
+		m.add(stop);
+		
+		JButton help = new JButton("Help");
+		m.add(help);
 		
 		Display line = new Display();
 		f.getContentPane().add(line, BorderLayout.CENTER);
-		f.getContentPane().add(panel, BorderLayout.NORTH);
+		f.getContentPane().add(m, BorderLayout.NORTH);
+		f.getContentPane().add(p, BorderLayout.SOUTH);
 		f.pack();
 		
 		class Rotate implements ActionListener{
@@ -87,6 +109,17 @@ public class Display extends JPanel {
 		}
 		
 		stop.addActionListener(new Stop());
+		
+		class Help implements ActionListener{
+			public void actionPerformed(ActionEvent e){
+				JFrame f = new JFrame("Help");
+				f.setVisible(true);
+				f.setSize(300,300);
+
+			}
+		}
+		
+		help.addActionListener(new Help());
 	}
 }
 
