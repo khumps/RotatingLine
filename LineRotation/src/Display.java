@@ -17,7 +17,7 @@ import javax.swing.JPanel;
 public class Display extends JPanel {
 	
 	static int frameWidth = 800;
-	static int frameHeight = 600;
+	static int frameHeight = 800;
 	
 	public int getFrameWidth() {
 		return frameWidth;
@@ -49,8 +49,9 @@ public class Display extends JPanel {
 		
 		JFrame.setDefaultLookAndFeelDecorated(true);
 		JFrame f = new JFrame("Line Rotator");
-		f.setResizable(false);
+		//f.setResizable(false);
 		f.setVisible(true);
+		f.setMinimumSize(new Dimension(400,400));
 		f.setPreferredSize(new Dimension(frameWidth,frameHeight));
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		JPanel p = new JPanel(new GridBagLayout());
