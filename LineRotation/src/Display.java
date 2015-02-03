@@ -4,6 +4,7 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -15,24 +16,15 @@ import javax.swing.JPanel;
 
 
 public class Display extends JPanel {
-	
-	static int frameWidth = 800;
-	static int frameHeight = 800;
+	static int frameWidth = 600;
+	static int frameHeight = 600;
 	
 	public int getFrameWidth() {
 		return frameWidth;
 	}
 
-	public void setFrameWidth(int frameWidth) {
-		this.frameWidth = frameWidth;
-	}
-
 	public int getFrameHeight() {
 		return frameHeight;
-	}
-
-	public void setFrameHeight(int frameHeight) {
-		this.frameHeight = frameHeight;
 	}
 
 	public void drawing(){
@@ -49,9 +41,10 @@ public class Display extends JPanel {
 		
 		JFrame.setDefaultLookAndFeelDecorated(true);
 		JFrame f = new JFrame("Line Rotator");
+		
 		//f.setResizable(false);
 		f.setVisible(true);
-		f.setMinimumSize(new Dimension(400,400));
+		f.setMinimumSize(new Dimension(450,465));
 		f.setPreferredSize(new Dimension(frameWidth,frameHeight));
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		JPanel p = new JPanel(new GridBagLayout());
