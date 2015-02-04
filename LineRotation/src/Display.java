@@ -14,6 +14,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 
 public class Display extends JPanel {
+	
 	private static Color c = new Color(0,0,0);
 	
 	public void drawLine(){
@@ -27,8 +28,9 @@ public class Display extends JPanel {
 	}
 	
 	public static void main(String[] args) {
-		JFrame f = new JFrame("Line Rotator");
+		
 		JFrame.setDefaultLookAndFeelDecorated(true);
+		JFrame f = new JFrame("Line Rotator");
 		f.setVisible(true);
 		f.setMinimumSize(new Dimension(500,500));
 		f.setPreferredSize(new Dimension(600,600));
@@ -107,8 +109,7 @@ public class Display extends JPanel {
 		
 		class ChangeColor implements ActionListener{
 			public void actionPerformed(ActionEvent e){
-				c = new Color(255,0,0);
-				//repaint();
+				c = new Color(250,0,0);
 			}
 		}
 		
