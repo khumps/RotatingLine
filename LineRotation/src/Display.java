@@ -4,7 +4,6 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,39 +13,27 @@ import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 
-
 public class Display extends JPanel {
-	static int frameWidth = 600;
-	static int frameHeight = 600;
+	private static Color c = new Color(0,0,0);
 	
-	public int getFrameWidth() {
-		return frameWidth;
-	}
-
-	public int getFrameHeight() {
-		return frameHeight;
-	}
-
-	public void drawing(){
+	public void drawLine(){
 		repaint();
 	}
 	
-	public void paintComponent(Graphics g){
-		g.setColor(Color.BLUE);
-		g.drawLine(0,0,frameWidth,frameHeight - 50);
+	public void paintComponent(Graphics gr){
+		gr.setColor(c);
+		gr.drawLine(0,0,getWidth(),getHeight());
 
 	}
 	
 	public static void main(String[] args) {
-		
-		JFrame.setDefaultLookAndFeelDecorated(true);
 		JFrame f = new JFrame("Line Rotator");
-		
-		//f.setResizable(false);
+		JFrame.setDefaultLookAndFeelDecorated(true);
 		f.setVisible(true);
-		f.setMinimumSize(new Dimension(450,465));
-		f.setPreferredSize(new Dimension(frameWidth,frameHeight));
+		f.setMinimumSize(new Dimension(500,500));
+		f.setPreferredSize(new Dimension(600,600));
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
 		JPanel p = new JPanel(new GridBagLayout());
 
 		GridBagConstraints g = new GridBagConstraints();
@@ -63,6 +50,9 @@ public class Display extends JPanel {
 		
 		JButton stop = new JButton("Stop");
 		m.add(stop);
+		
+		JButton color = new JButton("Change Color");
+		m.add(color);
 		
 		JButton help = new JButton("Help");
 		m.add(help);
@@ -114,6 +104,15 @@ public class Display extends JPanel {
 		}
 		
 		help.addActionListener(new Help());
+		
+		class ChangeColor implements ActionListener{
+			public void actionPerformed(ActionEvent e){
+				c = new Color(255,0,0);
+				//repaint();
+			}
+		}
+		
+		color.addActionListener(new ChangeColor());
 	}
 }
 
