@@ -7,6 +7,7 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Random;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -27,8 +28,7 @@ public class Display extends JPanel {
 		Point end = new Point(getWidth(), getHeight());
 		
 		gr.setColor(c);
-		Line l = new Line(start,end);
-		
+		//Line l = new Line(start,end);
 		gr.drawLine(start.x,start.y,end.x,end.y);
 
 	}
@@ -115,7 +115,8 @@ public class Display extends JPanel {
 		
 		class ChangeColor implements ActionListener{
 			public void actionPerformed(ActionEvent e){
-				c = new Color(250,0,0);
+				Random rnd = new Random();
+				c = new Color(rnd.nextInt(251) + 0,rnd.nextInt(251) + 0,rnd.nextInt(251) + 0);
 				f.repaint();
 			}
 		}
