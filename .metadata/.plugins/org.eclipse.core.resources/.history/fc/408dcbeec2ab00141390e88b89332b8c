@@ -8,10 +8,9 @@ public class Line extends Polygon {
 	}
 
 	public void rotate(double degrees) {
-		degrees = Math.toRadians(degrees);
 		Line a = this.pivot(degrees);
 		Line b = this.aPivot(degrees);
-		Point[] points = {a.endPoints[1],b.endPoints[1]};
+		Point[] points = {a.endPoints[0],b.endPoints[1]};
 		this.endPoints = points;
 	}
 	
@@ -21,6 +20,7 @@ public class Line extends Polygon {
 		double sin = Math.sin(angle);
 		int startX = super.center.x;
 		int startY = super.center.y;
+		int distance = (int)(this.length() / 2); // length of the segment
 		int endX = super.endPoints[1].x - startX;
 		int endY = super.endPoints[1].y - startY;
 		int endXNew = (int)(endX * cos - endY * sin);
@@ -37,6 +37,7 @@ public class Line extends Polygon {
 		double sin = Math.sin(angle);
 		int startX = super.center.x;
 		int startY = super.center.y;
+		int distance = (int)(this.length() / 2); // length of the segment
 		int endX = super.endPoints[0].x - startX;
 		int endY = super.endPoints[0].y - startY;
 		int endXNew = (int)(endX * cos - endY * sin);
@@ -47,12 +48,18 @@ public class Line extends Polygon {
 		return new Line(new Point(startX,startY),new Point(endX,endY));
 	}
 
+ 
+public double length()
+{
+	return Math.sqrt((super.endPoints[0].x - super.endPoints[1].x) + (super.endPoints[0].y - super.endPoints[1].y));
+}
+
 
 public static void main(String[] args)
 {
 	Line line = new Line(new Point(0,0), new Point(10,10));
 	System.out.println(line.toString());
-	line.rotate(45);
+	line.rotate(90);
 	System.out.println(line.toString());
 	
 }

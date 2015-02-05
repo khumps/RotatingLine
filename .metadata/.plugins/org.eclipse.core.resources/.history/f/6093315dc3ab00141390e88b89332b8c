@@ -21,6 +21,7 @@ public class Line extends Polygon {
 		double sin = Math.sin(angle);
 		int startX = super.center.x;
 		int startY = super.center.y;
+		int distance = (int)(this.length() / 2); // length of the segment
 		int endX = super.endPoints[1].x - startX;
 		int endY = super.endPoints[1].y - startY;
 		int endXNew = (int)(endX * cos - endY * sin);
@@ -37,6 +38,7 @@ public class Line extends Polygon {
 		double sin = Math.sin(angle);
 		int startX = super.center.x;
 		int startY = super.center.y;
+		int distance = (int)(this.length() / 2); // length of the segment
 		int endX = super.endPoints[0].x - startX;
 		int endY = super.endPoints[0].y - startY;
 		int endXNew = (int)(endX * cos - endY * sin);
@@ -46,6 +48,12 @@ public class Line extends Polygon {
 		
 		return new Line(new Point(startX,startY),new Point(endX,endY));
 	}
+
+ 
+public double length()
+{
+	return Math.sqrt((super.endPoints[0].x - super.endPoints[1].x) + (super.endPoints[0].y - super.endPoints[1].y));
+}
 
 
 public static void main(String[] args)
