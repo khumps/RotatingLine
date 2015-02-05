@@ -17,30 +17,8 @@ public class Polygon {
 	{
 		for(int i = 0; i < endPoints.length; i++)
 		{
-			pivot(this.endPoints[i],degrees);
+			//pivot(this.endPoints[i],degrees);
 		}
-	}
-	
-	private Point pivot(Point point, double degrees)
-	{
-		Line line = new Line(center, point);
-		int centerX = center.x;
-		int centerY = center.y;
-		int distance = (int)(line.length()); // islength of the segment
-		int endX = (int)(centerX + distance * Math.cos(degrees));
-		int endY = (int)(centerY + distance * Math.sin(degrees));
-		return new Point(endX,endY);
-	}
-	
-	public Point aPivot(Point point, double degrees)
-	{
-		Line line = new Line(center, point);
-		int centerX = center.x;
-		int centerY = center.y;
-		int distance = (int)(line.length()); // islength of the segment
-		int endX = (int)(centerX + distance * Math.cos(degrees * -1));
-		int endY = (int)(centerY + distance * Math.sin(degrees * -1));
-		return new Point(endX,endY);
 	}
 	
 	public String toString()
