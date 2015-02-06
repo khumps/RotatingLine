@@ -1,4 +1,5 @@
 import java.awt.BorderLayout;
+import java.awt.event.*;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -13,115 +14,94 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
+import javax.swing.Timer;
 
-public class Display extends JPanel {
+public class Display extends JFrame implements ActionListener{
 	
-	
+	int speed = 20;
 	private static Color c = new Color(0,0,0);
+	Timer t = new Timer(20,this);
+	LineDisplay line = new LineDisplay();
+	
+	Display(){
+		
+		final JFrame f = new JFrame("Line Rotator");	
+		setDefaultLookAndFeelDecorated(true);
+		setVisible(true);
+		setMinimumSize(new Dimension(500,500));
+		setPreferredSize(new Dimension(600,600));
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);	
+		
+		t.setActionCommand("timer");
+		
+		JMenuBar m = new JMenuBar();
+		JButton rotate = new JButton("Rotate Clockwise");
+		rotate.addActionListener(this);
+		rotate.setActionCommand("rotate");
+		m.add(rotate);
+		
+		JButton rotatecc = new JButton("Rotate Counter - Clockwise");
+		rotatecc.setActionCommand("cc");
+		m.add(rotatecc);
+		
+		JButton stop = new JButton("Stop");
+		stop.setActionCommand("stop");
+		m.add(stop);
+		
+		JButton color = new JButton("Change Color");
+		color.setActionCommand("color");
+		m.add(color);
+		
+		JButton help = new JButton("Help");
+		help.setActionCommand("help");
+		m.add(help);
+		
+		
+		getContentPane().add(m, BorderLayout.NORTH);
+		getContentPane().add(line);
+		pack();
+	}
 	
 	public void drawLine(){
 		repaint();
 	}
 	
-	public void paintComponent(Graphics gr){
-		Point start = new Point(0,0);
-		Point end = new Point(getWidth(), getHeight());
-		
-		gr.setColor(c);
-		//Line l = new Line(start,end);
-		gr.drawLine(start.x,start.y,end.x,end.y);
-
-	}
 	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		String command = e.getActionCommand();
+		if(command.equals("timer")){
+			line.l.rotate(10);
+			line.repaint();
+			System.out.println("timer");
+		}
+		if(command.equals("rotate")){
+			t.start();
+			System.out.println("rotate");
+		}
+		
+	}
+
 	public static void main(String[] args) {
 		
-		JFrame.setDefaultLookAndFeelDecorated(true);
-		final JFrame f = new JFrame("Line Rotator");	
-		f.setVisible(true);
-		f.setMinimumSize(new Dimension(500,500));
-		f.setPreferredSize(new Dimension(600,600));
-		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		JPanel p = new JPanel(new GridBagLayout());
-
-		GridBagConstraints g = new GridBagConstraints();
-		g.gridheight = 1;
-		g.gridwidth = 1;
-		g.insets = new Insets(0,0,0,0);
-		
-		JMenuBar m = new JMenuBar();
-		JButton rotate = new JButton("Rotate Clockwise");
-		m.add(rotate);
-
-		JButton rotatecc = new JButton("Rotate Counter - Clockwise");
-		m.add(rotatecc);
-		
-		JButton stop = new JButton("Stop");
-		m.add(stop);
-		
-		JButton color = new JButton("Change Color");
-		m.add(color);
-		
-		JButton help = new JButton("Help");
-		m.add(help);
-		
 		Display line = new Display();
-		f.getContentPane().add(line, BorderLayout.CENTER);
-		f.getContentPane().add(m, BorderLayout.NORTH);
-		f.getContentPane().add(p, BorderLayout.SOUTH);
-		f.pack();
+		line.setVisible(true);
 		
-		class Rotate implements ActionListener{
-			public void actionPerformed(ActionEvent e){
-				JFrame f = new JFrame("ClockWise");
-				f.setVisible(true);
-				f.setSize(200,50);
-				
-			}
-		}
-		
-		rotate.addActionListener(new Rotate());
-		
-		class RotateCC implements ActionListener{
-			public void actionPerformed(ActionEvent e){
-				JFrame f = new JFrame("Counter ClockWise");
-				f.setVisible(true);
-				f.setSize(200,50);
-			}			
-		}
-		
-		rotatecc.addActionListener(new RotateCC());
-		
-		class Stop implements ActionListener{
-			public void actionPerformed(ActionEvent e){
-				JFrame f = new JFrame("Stop");
-				f.setVisible(true);
-				f.setSize(200,50);
-			}
-		}
-		
-		stop.addActionListener(new Stop());
-		
-		class Help implements ActionListener{
-			public void actionPerformed(ActionEvent e){
-				JFrame f = new JFrame("Help");
-				f.setVisible(true);
-				f.setSize(300,300);
 
-			}
-		}
 		
-		help.addActionListener(new Help());
+//		class ChangeColor implements ActionListener{
+//			public void actionPerformed(ActionEvent e){
+//				Random rnd = new Random();
+//				c = new Color(rnd.nextInt(251) + 0,rnd.nextInt(251) + 0,rnd.nextInt(251) + 0);
+//				f.repaint();
+//			}
+//		}
 		
-		class ChangeColor implements ActionListener{
-			public void actionPerformed(ActionEvent e){
-				Random rnd = new Random();
-				c = new Color(rnd.nextInt(251) + 0,rnd.nextInt(251) + 0,rnd.nextInt(251) + 0);
-				f.repaint();
-			}
-		}
 		
-		color.addActionListener(new ChangeColor());
 	}
+
+
+
+
 }
 
