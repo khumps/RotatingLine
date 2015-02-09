@@ -51,12 +51,9 @@ public class Line extends Polygon {
 public static void main(String[] args)
 {
 	Line line = new Line(new Point(0,0), new Point(10,10));
-	//System.out.println(line.toString());
-	System.out.println(line.endPoints[0]);
-	System.out.println(line.endPoints[1]);
-	line.rotate(1);
-	System.out.println(line.endPoints[0]);
-	System.out.println(line.endPoints[1]);
+	System.out.println(line.toString());
+	line.rotate(45);
+	System.out.println(line.toString());
 	
 }
 }

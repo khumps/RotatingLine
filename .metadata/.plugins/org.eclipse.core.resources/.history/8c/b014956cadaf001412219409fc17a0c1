@@ -54,9 +54,8 @@ public static void main(String[] args)
 	//System.out.println(line.toString());
 	System.out.println(line.endPoints[0]);
 	System.out.println(line.endPoints[1]);
-	line.rotate(1);
-	System.out.println(line.endPoints[0]);
-	System.out.println(line.endPoints[1]);
+	line.rotate(45);
+	//System.out.println(line.toString());
 	
 }
 }

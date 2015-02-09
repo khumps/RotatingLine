@@ -76,9 +76,11 @@ public class Display extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		String command = e.getActionCommand();
 		if(command.equals("timer")){
+			System.out.println("timer1");
 			line.l.rotate(50);
+			
 			line.repaint();
-			System.out.println("timer");
+			System.out.println("timer2");
 		}
 		if(command.equals("rotate")){
 			t.start();
