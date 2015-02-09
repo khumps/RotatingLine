@@ -1,12 +1,13 @@
 public class Polygon {
-	private double orientation = 0; //Current rotation of the Polygon
-	protected final Point center;
-	protected Point[] endPoints;
+	private final Point center;
+	private Point[] endPoints;
 	private Point[] tempEndPoints;
 	public Polygon(Point center, Point... endPoints) {
 		this.center = center;
 		this.endPoints = endPoints;
 	}
+	
+	
 	
 	/*public Point rotate(double degrees)
 	{
@@ -28,6 +29,33 @@ public class Polygon {
 			str += point.toString() + ", ";
 		return str;
 	}
-	
+	public Point[] getEndPoints() {
+		return endPoints;
+	}
+
+
+
+	public void setEndPoints(Point[] endPoints) {
+		for(int i = 0; i < this.endPoints.length; i++)
+			this.getEndPoints()[i] = endPoints[i];
+	}
+
+
+
+	public Point[] getTempEndPoints() {
+		return tempEndPoints;
+	}
+
+
+
+	public void setTempEndPoints(Point[] tempEndPoints) {
+		this.tempEndPoints = tempEndPoints;
+	}
+
+
+
+	public Point getCenter() {
+		return center;
+	}
 
 }

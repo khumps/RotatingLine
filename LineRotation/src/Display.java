@@ -6,9 +6,9 @@ import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import java.util.Random;
 
 import javax.swing.JButton;
@@ -16,6 +16,7 @@ import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 import javax.swing.Timer;
+
 
 public class Display extends JFrame implements ActionListener{
 	
@@ -76,9 +77,9 @@ public class Display extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		String command = e.getActionCommand();
 		if(command.equals("timer")){
-			line.l.rotate(50);
+			line.getL().rotate(10);
 			line.repaint();
-			System.out.println("timer");
+			System.out.println(line.getL().getEndPoints()[0].toString());
 		}
 		if(command.equals("rotate")){
 			t.start();
