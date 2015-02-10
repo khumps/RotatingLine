@@ -17,7 +17,7 @@ public class LineDisplay extends JPanel {
 	int height = 500;
 	int i = 0;
 	Point start = new Point(0,0);
-	Point end;
+	Point end = new Point(width,height);
 	private Line l;
 	
 	public void paintComponent(Graphics gr){
@@ -33,11 +33,6 @@ public class LineDisplay extends JPanel {
 		gr.setColor(c);
 		//gr.drawLine(l.getEndPoints()[0].x,l.getEndPoints()[0].y,l.getEndPoints()[1].x,l.getEndPoints()[1].y);
 		gr.drawLine(l.getEndPoints()[0].x,l.getEndPoints()[0].y, l.getEndPoints()[1].x, l.getEndPoints()[1].y);
-	}
-	
-	public void isResized()
-	{
-		i = 0;
 	}
 
 	public Line getL() {

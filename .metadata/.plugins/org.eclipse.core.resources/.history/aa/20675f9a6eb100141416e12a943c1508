@@ -37,7 +37,7 @@ public class LineDisplay extends JPanel {
 	
 	public void isResized()
 	{
-		i = 0;
+		i = 1;
 	}
 
 	public Line getL() {

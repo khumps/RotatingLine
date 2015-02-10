@@ -34,11 +34,6 @@ public class LineDisplay extends JPanel {
 		//gr.drawLine(l.getEndPoints()[0].x,l.getEndPoints()[0].y,l.getEndPoints()[1].x,l.getEndPoints()[1].y);
 		gr.drawLine(l.getEndPoints()[0].x,l.getEndPoints()[0].y, l.getEndPoints()[1].x, l.getEndPoints()[1].y);
 	}
-	
-	public void isResized()
-	{
-		i = 0;
-	}
 
 	public Line getL() {
 		return l;
