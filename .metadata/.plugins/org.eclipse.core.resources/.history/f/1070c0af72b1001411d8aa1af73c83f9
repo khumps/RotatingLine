@@ -23,8 +23,8 @@ public class Line extends Polygon {
 		double sin = Math.sin(angle);
 		int startX = super.getCenter().x;
 		int startY = super.getCenter().y;
-		int endX = super.endPoints[1].x - startX;
-		int endY = super.endPoints[1].y - startY;
+		int endX = super.getEndPoints()[1].x - startX;
+		int endY = super.getEndPoints()[1].y - startY;
 		int endXNew = (int)Math.ceil((endX * cos - endY * sin));
 		int endYNew = (int)Math.ceil((endX * sin + endY * cos));
 		endX = (int) Math.ceil(endXNew + startX);
@@ -39,8 +39,8 @@ public class Line extends Polygon {
 		double sin = Math.sin(angle);
 		int startX = super.getCenter().x;
 		int startY = super.getCenter().y;
-		int endX = super.endPoints[0].x - startX;
-		int endY = super.endPoints[0].y - startY;
+		int endX = super.getEndPoints()[0].x - startX;
+		int endY = super.getEndPoints()[0].y - startY;
 		double endXNew = (endX * cos - endY * sin);
 		double endYNew = (endX * sin + endY * cos);
 		endX = (int) Math.floor(endXNew + startX);
@@ -67,21 +67,11 @@ public static void main(String[] args)
 
 public Point getStart()
 {
-	return super.endPoints[0];
+	return super.getEndPoints()[0];
 }
 
 public Point getEnd()
 {
-	return super.endPoints[1];
-}
-
-public void setStart(Point start)
-{
-	super.endPoints[0] = start;
-}
-
-public void setEnd(Point end)
-{
-	super.endPoints[0] = end;
+	return super.getEndPoints()[1];
 }
 }

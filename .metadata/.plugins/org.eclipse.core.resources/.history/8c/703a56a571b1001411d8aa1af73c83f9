@@ -15,6 +15,7 @@ public class LineDisplay extends JPanel {
 	Rectangle lineCanvas;
 	int width = 60;
 	int height = 60;
+	int screenOffset = 100; //how far line goes off screen
 	Point start = new Point(0,0);
 	Point end;
 	private Line l;

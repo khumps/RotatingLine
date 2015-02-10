@@ -1,7 +1,7 @@
 public class Polygon {
 	private final Point center;
-	protected Point[] endPoints;
-	protected Point[] tempEndPoints;
+	private Point[] endPoints;
+	private Point[] tempEndPoints;
 	private int orientation;
 	public Polygon(Point center, Point... endPoints) {
 		setOrientation(0);

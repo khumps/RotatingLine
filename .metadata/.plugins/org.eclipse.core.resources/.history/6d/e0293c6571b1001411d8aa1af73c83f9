@@ -43,9 +43,4 @@ public class LineDisplay extends JPanel {
 	public void setL(Line l) {
 		this.l = l;
 	}
-	
-	public void isResized()
-	{
-		isResized = false;
-	}
 }
