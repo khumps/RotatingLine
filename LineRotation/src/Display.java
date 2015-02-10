@@ -73,7 +73,7 @@ public class Display extends JFrame implements ActionListener{
 	}
 	
 	
-	@Override
+	//@Override
 	public void actionPerformed(ActionEvent e) {
 		String command = e.getActionCommand();
 		if(command.equals("timer")){
