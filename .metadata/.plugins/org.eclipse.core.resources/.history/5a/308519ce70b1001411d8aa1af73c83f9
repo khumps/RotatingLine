@@ -33,5 +33,5 @@ public class LineDisplay extends JPanel {
 	public void setL(Line l) {
 		this.l = l;
 	}
-//test
+
 }
