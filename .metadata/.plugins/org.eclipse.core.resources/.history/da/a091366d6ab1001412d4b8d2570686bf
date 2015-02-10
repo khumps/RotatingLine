@@ -64,14 +64,4 @@ public static void main(String[] args)
 	System.out.println(line.getEndPoints()[1]);
 	
 }
-
-public Point getStart()
-{
-	return super.getEndPoints()[0];
-}
-
-public Point getEnd()
-{
-	return super.getEndPoints()[1];
-}
 }
