@@ -42,8 +42,8 @@ public class Line extends Polygon {
 		int endY = super.getEndPoints()[0].y - startY;
 		double endXNew = (endX * cos - endY * sin);
 		double endYNew = (endX * sin + endY * cos);
-		endX = (int) Math.floor(endXNew + startX);
-		endY = (int)Math.floor(endYNew + startY);
+		endX = (int) Math.ceil(endXNew + startX);
+		endY = (int)Math.ceil(endYNew + startY);
 		
 		return new Point(endX,endY);
 	}

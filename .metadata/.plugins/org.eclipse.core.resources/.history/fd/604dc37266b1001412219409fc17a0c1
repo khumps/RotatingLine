@@ -25,7 +25,7 @@ public class Display extends JFrame implements ActionListener {
 	private static final long serialVersionUID = 454055181523406363L;
 	int speed = 20;
 	private static Color c = new Color(0, 0, 0);
-	Timer t = new Timer(5, this);
+	Timer t = new Timer(20, this);
 	LineDisplay line = new LineDisplay();
 
 	Display() {
@@ -74,7 +74,7 @@ public class Display extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		String command = e.getActionCommand();
 		if (command.equals("timer")) {
-			line.getL().rotate(1);
+			line.getL().rotate(90);
 			line.repaint();
 			System.out.println(line.getL().getEndPoints()[0].toString());
 		}
