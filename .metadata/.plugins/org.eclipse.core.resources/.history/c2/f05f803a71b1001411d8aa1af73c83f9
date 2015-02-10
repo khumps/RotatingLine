@@ -13,8 +13,8 @@ public class LineDisplay extends JPanel {
 	private static final long serialVersionUID = 6883927989034504376L;
 	private Color c = new Color(0,0,0);
 	Rectangle lineCanvas;
-	int width = 60;
-	int height = 60;
+	int width = 600;
+	int height = 600;
 	Point start = new Point(0,0);
 	Point end;
 	private Line l;
