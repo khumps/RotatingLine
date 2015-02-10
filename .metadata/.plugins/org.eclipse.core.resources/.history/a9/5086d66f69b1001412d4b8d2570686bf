@@ -4,7 +4,6 @@ public class Polygon {
 	private Point[] tempEndPoints;
 	private int orientation;
 	public Polygon(Point center, Point... endPoints) {
-		setOrientation(0);
 		this.center = center;
 		this.endPoints = endPoints;
 	}
@@ -58,18 +57,6 @@ public class Polygon {
 
 	public Point getCenter() {
 		return center;
-	}
-
-
-
-	public int getOrientation() {
-		return orientation;
-	}
-
-
-
-	public void setOrientation(int orientation) {
-		this.orientation = orientation % 360;
 	}
 
 }

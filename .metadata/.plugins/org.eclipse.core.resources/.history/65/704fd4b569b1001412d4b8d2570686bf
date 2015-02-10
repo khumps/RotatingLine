@@ -7,10 +7,10 @@ public class Line extends Polygon {
 	}
 
 	public void rotate(int degrees) {
-		super.setOrientation(super.getOrientation() + degrees);
+		super.setOrientation(super.getOrientation() + degrees)
 		double degreesR = Math.toRadians(degrees);
-		Point a = this.pivot(degreesR);
-		Point b = this.aPivot(degreesR);
+		Point a = this.pivot(degrees);
+		Point b = this.aPivot(degrees);
 		Point[] points = {a,b};
 		super.setEndPoints(points);
 		System.out.println("test");

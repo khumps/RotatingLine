@@ -69,7 +69,7 @@ public class Polygon {
 
 
 	public void setOrientation(int orientation) {
-		this.orientation = orientation % 360;
+		this.orientation = orientation;
 	}
 
 }
