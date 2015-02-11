@@ -6,24 +6,14 @@ public class Line extends Polygon {
 		//this.length = Math.sqrt((start.x - end.x) + (start.y - end.y));
 	}
 
-	public void rotate(int degrees) {
+	public Line rotate(int degrees) {
 		super.setOrientation(super.getOrientation() + degrees);
 		double degreesR = Math.toRadians(degrees);
 		Point a = this.pivot(degreesR);
 		Point b = this.aPivot(degreesR);
 		Point[] points = {a,b};
 		super.setEndPoints(points);
-		System.out.println("test");
-		
-	}
-	
-	public void rotateResize(int degrees) {//Called only when sceen is resized
-		double degreesR = Math.toRadians(degrees);
-		Point a = this.pivot(degreesR);
-		Point b = this.aPivot(degreesR);
-		Point[] points = {a,b};
-		super.setEndPoints(points);
-		System.out.println("test");
+		return new Line(a,b);
 		
 	}
 	
@@ -35,10 +25,10 @@ public class Line extends Polygon {
 		int startY = super.getCenter().y;
 		int endX = super.endPoints[1].x - startX;
 		int endY = super.endPoints[1].y - startY;
-		int endXNew = (int)Math.ceil((endX * cos - endY * sin));
-		int endYNew = (int)Math.ceil((endX * sin + endY * cos));
-		endX = (int) Math.ceil(endXNew + startX);
-		endY = (int)Math.ceil(endYNew + startY);
+		int endXNew = (int)Math.round((endX * cos - endY * sin));
+		int endYNew = (int)Math.round((endX * sin + endY * cos));
+		endX = endXNew + startX;
+		endY = endYNew + startY;
 		
 		return new Point(endX,endY);
 	}
@@ -51,10 +41,10 @@ public class Line extends Polygon {
 		int startY = super.getCenter().y;
 		int endX = super.endPoints[0].x - startX;
 		int endY = super.endPoints[0].y - startY;
-		double endXNew = (endX * cos - endY * sin);
-		double endYNew = (endX * sin + endY * cos);
-		endX = (int) Math.floor(endXNew + startX);
-		endY = (int)Math.floor(endYNew + startY);
+		int endXNew = (int)Math.round(endX * cos - endY * sin);
+		int endYNew = (int)Math.round(endX * sin + endY * cos);
+		endX = endXNew + startX;
+		endY = endYNew + startY;
 		
 		return new Point(endX,endY);
 	}
