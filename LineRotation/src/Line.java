@@ -17,6 +17,16 @@ public class Line extends Polygon {
 		
 	}
 	
+	public void rotateResize(int degrees) {//Called only when sceen is resized
+		double degreesR = Math.toRadians(degrees);
+		Point a = this.pivot(degreesR);
+		Point b = this.aPivot(degreesR);
+		Point[] points = {a,b};
+		super.setEndPoints(points);
+		System.out.println("test");
+		
+	}
+	
 	public Point pivot(double angle)
 	{
 		double cos = Math.cos(angle);

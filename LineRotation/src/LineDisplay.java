@@ -16,24 +16,17 @@ public class LineDisplay extends JPanel {
 	int width = 60;
 	int height = 60;
 	Point start = new Point(0,0);
-	Point end;
-	private Line l;
-	boolean isResized = true;
+	Point end = new Point(5,5);
+	private Line l = new Line(start,end);
+	int orientation;
+	
 	
 	public void paintComponent(Graphics gr){
 		super.paintComponent(gr);
-		if(isResized)
-		{
-			isResized = false;
-			width = getWidth();
-			height = getHeight();
-			end = new Point(width,height);
-			l = new Line(start,end);
-			
-		}
 		gr.setColor(c);
 		gr.drawLine(l.getEndPoints()[0].x,l.getEndPoints()[0].y,l.getEndPoints()[1].x,l.getEndPoints()[1].y);
 		//gr.drawLine(l.getEndPoints()[0].x,l.getEndPoints()[0].y, getWidth(), getHeight());
+		orientation = l.getOrientation();
 	}
 
 	public Line getL() {
@@ -42,10 +35,5 @@ public class LineDisplay extends JPanel {
 
 	public void setL(Line l) {
 		this.l = l;
-	}
-	
-	public void isResized()
-	{
-		isResized = false;
 	}
 }

@@ -9,6 +9,7 @@ import java.awt.Insets;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ComponentEvent;
 import java.util.Random;
 
 import javax.swing.JButton;
@@ -17,7 +18,8 @@ import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-public class Display extends JFrame implements ActionListener {
+public class Display extends JFrame implements ActionListener,
+		ComponentListener {
 
 	/**
 	 * 
@@ -36,6 +38,7 @@ public class Display extends JFrame implements ActionListener {
 		setMinimumSize(new Dimension(500, 500));
 		setPreferredSize(new Dimension(600, 600));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		line.addComponentListener(this);
 
 		t.setActionCommand("timer");
 
@@ -99,6 +102,32 @@ public class Display extends JFrame implements ActionListener {
 		// }
 		// }
 
+	}
+
+	@Override
+	public void componentResized(ComponentEvent e) {
+		line.orientation = line.getL().getOrientation();
+		line.height = line.getHeight();
+		line.width = line.getWidth();
+		line.end = new Point(line.width,line.height);
+		line.setL(new Line(line.start,line.end));
+		line.getL().rotate(line.orientation);
+		//line.isResized();
+		//line.getL().rotate(line.getL().getOrientation());
+		//line.repaint();
+
+	}
+
+	@Override
+	public void componentHidden(ComponentEvent arg0) {
+	}
+
+	@Override
+	public void componentMoved(ComponentEvent arg0) {
+	}
+
+	@Override
+	public void componentShown(ComponentEvent arg0) {
 	}
 
 }
