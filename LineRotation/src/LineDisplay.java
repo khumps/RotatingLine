@@ -12,6 +12,7 @@ public class LineDisplay extends JPanel {
 	 */
 	private static final long serialVersionUID = 6883927989034504376L;
 	
+	
 	Rectangle lineCanvas;
 	int width = 60;
 	int height = 60;
@@ -19,10 +20,10 @@ public class LineDisplay extends JPanel {
 	Point end = new Point(5,5);
 	private Line l = new Line(start,end);
 	int orientation;
-	
+	Graphics gr;
 	public void paintComponent(Graphics gr){
 		super.paintComponent(gr);
-		gr.setColor(Color.RED);
+		gr.setColor(Display.getC());
 		gr.drawLine(l.getEndPoints()[0].x,l.getEndPoints()[0].y,l.getEndPoints()[1].x,l.getEndPoints()[1].y);
 		//gr.drawLine(l.getEndPoints()[0].x,l.getEndPoints()[0].y, getWidth(), getHeight());
 		orientation = l.getOrientation();
@@ -35,6 +36,7 @@ public class LineDisplay extends JPanel {
 	public void setL(Line l) {
 		this.l = l;
 	}
+	
 	
 	
 }

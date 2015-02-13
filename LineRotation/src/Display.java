@@ -24,7 +24,7 @@ public class Display extends JFrame implements ActionListener,
 	/**
 	 * 
 	 */
-	Color c = new Color(0,0,0);
+	static Color c = new Color(0,0,0);
 	private static final long serialVersionUID = 454055181523406363L;
 	int speed = 20;
 	JFrame f = new JFrame("Line Rotator");
@@ -59,6 +59,7 @@ public class Display extends JFrame implements ActionListener,
 		m.add(stop);
 
 		JButton color = new JButton("Change Color");
+		rotate.addActionListener(this);
 		color.setActionCommand("color");
 		m.add(color);
 
@@ -96,11 +97,11 @@ public class Display extends JFrame implements ActionListener,
 			System.out.println("rotate");
 		}
 		if (command.equals("color")){
-			Color c = new Color(250,0,0);
+			setC(new Color(250,0,0));
 //			Random rnd = new Random();
 //			setC(new Color(rnd.nextInt(251) + 0,rnd.nextInt(251) +
 //			0,rnd.nextInt(251) + 0));
-			f.repaint();
+			line.repaint();
 		}
 
 	}
@@ -144,12 +145,12 @@ public class Display extends JFrame implements ActionListener,
 	public void componentShown(ComponentEvent arg0) {
 	}
 	
-	public Color getC(){
+	public static Color getC(){
 		return c;
 	}
 	
-	public void setC(Color c){
-		this.c = c;
+	public static void setC(Color c){
+		Display.c = c;
 	}
 
 }
