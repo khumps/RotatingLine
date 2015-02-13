@@ -24,16 +24,17 @@ public class Display extends JFrame implements ActionListener,
 	/**
 	 * 
 	 */
+	Color c = new Color(0,0,0);
 	private static final long serialVersionUID = 454055181523406363L;
 	int speed = 20;
-	private static Color c = new Color(0, 0, 0);
+	JFrame f = new JFrame("Line Rotator");
 	Timer t = new Timer(1, this);
 	LineDisplay line = new LineDisplay();
 	int inaccuracy = 0;
 
 	Display() {
 
-		// final JFrame f = new JFrame("Line Rotator");
+		
 		setDefaultLookAndFeelDecorated(true);
 		setVisible(true);
 		setMinimumSize(new Dimension(500, 500));
@@ -94,6 +95,13 @@ public class Display extends JFrame implements ActionListener,
 			t.start();
 			System.out.println("rotate");
 		}
+		if (command.equals("color")){
+			Color c = new Color(250,0,0);
+//			Random rnd = new Random();
+//			setC(new Color(rnd.nextInt(251) + 0,rnd.nextInt(251) +
+//			0,rnd.nextInt(251) + 0));
+			f.repaint();
+		}
 
 	}
 
@@ -134,6 +142,14 @@ public class Display extends JFrame implements ActionListener,
 
 	@Override
 	public void componentShown(ComponentEvent arg0) {
+	}
+	
+	public Color getC(){
+		return c;
+	}
+	
+	public void setC(Color c){
+		this.c = c;
 	}
 
 }
