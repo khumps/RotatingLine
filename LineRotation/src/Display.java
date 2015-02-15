@@ -27,7 +27,7 @@ public class Display extends JFrame implements ActionListener,
 	private static Color c = new Color(0,0,0);
 	private static final long serialVersionUID = 454055181523406363L;
 	int speed = 20;
-	Timer t = new Timer(1, this);
+	Timer t = new Timer(10, this);
 	LineDisplay line = new LineDisplay();
 	int inaccuracy = 0;
 
