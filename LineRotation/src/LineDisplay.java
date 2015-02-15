@@ -20,7 +20,7 @@ public class LineDisplay extends JPanel {
 	Point end = new Point(5,5);
 	private Line l = new Line(start,end);
 	int orientation;
-	Graphics gr;
+	
 	public void paintComponent(Graphics gr){
 		super.paintComponent(gr);
 		gr.setColor(Display.getC());

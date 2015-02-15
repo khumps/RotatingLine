@@ -24,10 +24,9 @@ public class Display extends JFrame implements ActionListener,
 	/**
 	 * 
 	 */
-	static Color c = new Color(0,0,0);
+	private static Color c = new Color(0,0,0);
 	private static final long serialVersionUID = 454055181523406363L;
 	int speed = 20;
-	JFrame f = new JFrame("Line Rotator");
 	Timer t = new Timer(1, this);
 	LineDisplay line = new LineDisplay();
 	int inaccuracy = 0;
