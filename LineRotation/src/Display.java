@@ -50,6 +50,7 @@ public class Display extends JFrame implements ActionListener,
 		m.add(rotate);
 
 		JButton rotatecc = new JButton("Rotate Counter - Clockwise");
+		rotatecc.addActionListener(this);
 		rotatecc.setActionCommand("cc");
 		m.add(rotatecc);
 
@@ -60,16 +61,8 @@ public class Display extends JFrame implements ActionListener,
 
 		JButton color = new JButton("Change Color");
 		color.addActionListener(this);
+		color.setActionCommand("color");
 		m.add(color);
-		 class ChangeColor implements ActionListener{
-			 public void actionPerformed(ActionEvent e){
-				 Random rnd = new Random();
-				 c = new Color(rnd.nextInt(251) + 0, rnd.nextInt(251) +0, 
-						 rnd.nextInt(251) + 0);
-				 line.repaint();
-			 	}
-			 }
-		color.addActionListener(new ChangeColor());
 		
 		JButton help = new JButton("Help");
 		help.addActionListener(this);
@@ -107,10 +100,20 @@ public class Display extends JFrame implements ActionListener,
 			System.out.println("rotate");
 		}
 		
+		if(command.equals("cc")){
+		}
+		
 		if(command.equals("stop")){
 			t.stop();
 		}
-
+		
+		if(command.equals("color")){
+			Random rnd = new Random();
+			 c = new Color(rnd.nextInt(251) + 0, rnd.nextInt(251) +0, 
+					 rnd.nextInt(251) + 0);
+			 line.repaint();
+		}
+		
 		if(command.equals("help")){
 		}
 
