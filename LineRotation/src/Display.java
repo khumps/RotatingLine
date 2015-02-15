@@ -54,6 +54,7 @@ public class Display extends JFrame implements ActionListener,
 		m.add(rotatecc);
 
 		JButton stop = new JButton("Stop");
+		stop.addActionListener(this);
 		stop.setActionCommand("stop");
 		m.add(stop);
 
@@ -71,6 +72,7 @@ public class Display extends JFrame implements ActionListener,
 		color.addActionListener(new ChangeColor());
 		
 		JButton help = new JButton("Help");
+		help.addActionListener(this);
 		help.setActionCommand("help");
 		m.add(help);
 
@@ -99,9 +101,17 @@ public class Display extends JFrame implements ActionListener,
 			line.repaint();
 			System.out.println(line.getL().getEndPoints()[0].toString());
 		}
+		
 		if (command.equals("rotate")) {
 			t.start();
 			System.out.println("rotate");
+		}
+		
+		if(command.equals("stop")){
+			t.stop();
+		}
+
+		if(command.equals("help")){
 		}
 
 	}
