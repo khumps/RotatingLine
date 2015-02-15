@@ -59,10 +59,18 @@ public class Display extends JFrame implements ActionListener,
 		m.add(stop);
 
 		JButton color = new JButton("Change Color");
-		rotate.addActionListener(this);
-		color.setActionCommand("color");
+		color.addActionListener(this);
 		m.add(color);
-
+		 class ChangeColor implements ActionListener{
+			 public void actionPerformed(ActionEvent e){
+				 Random rnd = new Random();
+				 c = new Color(rnd.nextInt(251) + 0, rnd.nextInt(251) +0, 
+						 rnd.nextInt(251) + 0);
+				 line.repaint();
+			 	}
+			 }
+		color.addActionListener(new ChangeColor());
+		
 		JButton help = new JButton("Help");
 		help.setActionCommand("help");
 		m.add(help);
@@ -96,13 +104,6 @@ public class Display extends JFrame implements ActionListener,
 			t.start();
 			System.out.println("rotate");
 		}
-		if (command.equals("color")){
-			setC(new Color(250,0,0));
-//			Random rnd = new Random();
-//			setC(new Color(rnd.nextInt(251) + 0,rnd.nextInt(251) +
-//			0,rnd.nextInt(251) + 0));
-			line.repaint();
-		}
 
 	}
 
@@ -111,14 +112,7 @@ public class Display extends JFrame implements ActionListener,
 		Display line = new Display();
 		line.setVisible(true);
 
-		// class ChangeColor implements ActionListener{
-		// public void actionPerformed(ActionEvent e){
-		// Random rnd = new Random();
-		// c = new Color(rnd.nextInt(251) + 0,rnd.nextInt(251) +
-		// 0,rnd.nextInt(251) + 0);
-		// f.repaint();
-		// }
-		// }
+	
 
 	}
 
