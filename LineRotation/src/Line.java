@@ -19,9 +19,9 @@ public class Line extends Polygon {
 	
 	public Line rotatecc(int degrees) {
 		super.setOrientation(super.getOrientation() + degrees);
-		double degreesR = Math.toRadians(degrees);
-		Point a = this.pivot(-1 * degreesR);
-		Point b = this.aPivot(-1 * degreesR);
+		double degreesR = Math.toRadians(-1 * degrees);
+		Point a = this.pivot(degreesR);
+		Point b = this.aPivot( degreesR);
 		Point[] points = {a,b};
 		super.setEndPoints(points);
 		return new Line(a,b);

@@ -28,6 +28,7 @@ public class Display extends JFrame implements ActionListener,
 	private static final long serialVersionUID = 454055181523406363L;
 	int speed = 20;
 	Timer t = new Timer(10, this);
+	Timer ti = new Timer(10,this);
 	LineDisplay line = new LineDisplay();
 	int inaccuracy = 0;
 
@@ -42,7 +43,7 @@ public class Display extends JFrame implements ActionListener,
 		line.addComponentListener(this);
 
 		t.setActionCommand("timer");
-		t.setActionCommand("timercc");
+		ti.setActionCommand("timercc");
 
 		JMenuBar m = new JMenuBar();
 		JButton rotate = new JButton("Rotate Clockwise");
@@ -95,19 +96,35 @@ public class Display extends JFrame implements ActionListener,
 			line.repaint();
 			System.out.println(line.getL().getEndPoints()[0].toString());
 		}
-		
+		if (command.equals("timercc")) {
+			inaccuracy++;
+			if(inaccuracy == 500)
+			{
+				inaccuracy = 0;
+			line.setL(new Line(line.start,line.end));
+			line.getL().rotatecc(line.orientation);
+			}
+			
+			line.getL().rotatecc(1);
+			line.repaint();
+			System.out.println(line.getL().getEndPoints()[0].toString());
+		}
 		
 		if (command.equals("rotate")) {
+			ti.stop();
 			t.start();
 			System.out.println("rotate");
 		}
 		
 		if(command.equals("cc")){
+			t.stop();
+			ti.start();
 			
 		}
 		
 		if(command.equals("stop")){
 			t.stop();
+			ti.stop();
 		}
 		
 		if(command.equals("color")){
