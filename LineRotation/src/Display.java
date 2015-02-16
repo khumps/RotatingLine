@@ -42,6 +42,7 @@ public class Display extends JFrame implements ActionListener,
 		line.addComponentListener(this);
 
 		t.setActionCommand("timer");
+		t.setActionCommand("timercc");
 
 		JMenuBar m = new JMenuBar();
 		JButton rotate = new JButton("Rotate Clockwise");
@@ -95,12 +96,14 @@ public class Display extends JFrame implements ActionListener,
 			System.out.println(line.getL().getEndPoints()[0].toString());
 		}
 		
+		
 		if (command.equals("rotate")) {
 			t.start();
 			System.out.println("rotate");
 		}
 		
 		if(command.equals("cc")){
+			
 		}
 		
 		if(command.equals("stop")){
