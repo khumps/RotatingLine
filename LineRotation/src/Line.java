@@ -17,7 +17,7 @@ public class Line extends Polygon {
 		
 	}
 	
-	public Line rotatecc(int degrees) {
+/*	public Line rotatecc(int degrees) {
 		super.setOrientation(super.getOrientation() + degrees);
 		double degreesR = Math.toRadians(-1 * degrees);
 		Point a = this.pivot(degreesR);
@@ -26,7 +26,7 @@ public class Line extends Polygon {
 		super.setEndPoints(points);
 		return new Line(a,b);
 		
-	}
+	}*/
 	public Point pivot(double angle)
 	{
 		double cos = Math.cos(angle);

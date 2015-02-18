@@ -43,7 +43,7 @@ public class Display extends JFrame implements ActionListener,
 		line.addComponentListener(this);
 
 		t.setActionCommand("timer");
-		ti.setActionCommand("timercc");
+		ti.setActionCommand("rotatecc");
 
 		JMenuBar m = new JMenuBar();
 		JButton rotate = new JButton("Rotate Clockwise");
@@ -83,29 +83,13 @@ public class Display extends JFrame implements ActionListener,
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		String command = e.getActionCommand();
-		if (command.equals("timer")) {
-			inaccuracy++;
-			if(inaccuracy == 500)
-			{
-				inaccuracy = 0;
-			line.setL(new Line(line.start,line.end));
-			line.getL().rotate(line.orientation);
-			}
-			
+		if (command.equals("timer")) {			
 			line.getL().rotate(1);
 			line.repaint();
 			System.out.println(line.getL().getEndPoints()[0].toString());
 		}
-		if (command.equals("timercc")) {
-			inaccuracy++;
-			if(inaccuracy == 500)
-			{
-				inaccuracy = 0;
-			line.setL(new Line(line.start,line.end));
-			line.getL().rotatecc(line.orientation);
-			}
-			
-			line.getL().rotatecc(1);
+		if (command.equals("rotatecc")) {
+			line.getL().rotate(-1);
 			line.repaint();
 			System.out.println(line.getL().getEndPoints()[0].toString());
 		}
