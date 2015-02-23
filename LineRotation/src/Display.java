@@ -24,17 +24,15 @@ public class Display extends JFrame implements ActionListener,
 	/**
 	 * 
 	 */
-	private static Color c = new Color(0,0,0);
+	private static Color c = new Color(0, 0, 0);
 	private static final long serialVersionUID = 454055181523406363L;
 	int speed = 20;
 	Timer t = new Timer(10, this);
-	Timer ti = new Timer(10,this);
+	Timer ti = new Timer(10, this);
 	LineDisplay line = new LineDisplay();
-	int inaccuracy = 0;
 
 	Display() {
 
-		
 		setDefaultLookAndFeelDecorated(true);
 		setVisible(true);
 		setMinimumSize(new Dimension(500, 500));
@@ -46,6 +44,7 @@ public class Display extends JFrame implements ActionListener,
 		ti.setActionCommand("rotatecc");
 
 		JMenuBar m = new JMenuBar();
+
 		JButton rotate = new JButton("Rotate Clockwise");
 		rotate.addActionListener(this);
 		rotate.setActionCommand("rotate");
@@ -71,14 +70,10 @@ public class Display extends JFrame implements ActionListener,
 		pack();
 	}
 
-	public void drawLine() {
-		repaint();
-	}
-
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		String command = e.getActionCommand();
-		if (command.equals("timer")) {			
+		if (command.equals("timer")) {
 			line.getL().rotate(1);
 			line.repaint();
 			System.out.println(line.getL().getEndPoints()[0].toString());
@@ -88,29 +83,29 @@ public class Display extends JFrame implements ActionListener,
 			line.repaint();
 			System.out.println(line.getL().getEndPoints()[0].toString());
 		}
-		
+
 		if (command.equals("rotate")) {
 			ti.stop();
 			t.start();
 			System.out.println("rotate");
 		}
-		
-		if(command.equals("cc")){
+
+		if (command.equals("cc")) {
 			t.stop();
 			ti.start();
-			
+
 		}
-		
-		if(command.equals("stop")){
+
+		if (command.equals("stop")) {
 			t.stop();
 			ti.stop();
 		}
-		
-		if(command.equals("color")){
+
+		if (command.equals("color")) {
 			Random rnd = new Random();
-			 c = new Color(rnd.nextInt(251) + 0, rnd.nextInt(251) +0, 
-					 rnd.nextInt(251) + 0);
-			 line.repaint();
+			c = new Color(rnd.nextInt(251) + 0, rnd.nextInt(251) + 0,
+					rnd.nextInt(251) + 0);
+			line.repaint();
 		}
 
 	}
@@ -120,8 +115,6 @@ public class Display extends JFrame implements ActionListener,
 		Display line = new Display();
 		line.setVisible(true);
 
-	
-
 	}
 
 	@Override
@@ -129,8 +122,8 @@ public class Display extends JFrame implements ActionListener,
 		line.orientation = line.getL().getOrientation();
 		line.height = line.getHeight();
 		line.width = line.getWidth();
-		line.end = new Point(line.width,line.height);
-		line.setL(new Line(line.start,line.end));
+		line.end = new Point(line.width, line.height);
+		line.setL(new Line(line.start, line.end));
 		line.getL().rotate(line.orientation);
 
 	}
@@ -146,12 +139,12 @@ public class Display extends JFrame implements ActionListener,
 	@Override
 	public void componentShown(ComponentEvent arg0) {
 	}
-	
-	public static Color getC(){
+
+	public static Color getC() {
 		return c;
 	}
-	
-	public static void setC(Color c){
+
+	public static void setC(Color c) {
 		Display.c = c;
 	}
 
