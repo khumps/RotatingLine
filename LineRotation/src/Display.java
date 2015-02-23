@@ -29,10 +29,11 @@ public class Display extends JFrame implements ActionListener,
 	 */
 	private static Color c = new Color(0,0,0);
 	private static final long serialVersionUID = 454055181523406363L;
-	int speed = 20;
-	Timer t = new Timer(10, this);
-	Timer ti = new Timer(10,this);
+	int speed = 0;
+	Timer t = new Timer(speed, this);
+	Timer ti = new Timer(speed,this);
 	LineDisplay line = new LineDisplay();
+	JSlider speedSlider;
 	
 
 	Display() {
@@ -69,8 +70,9 @@ public class Display extends JFrame implements ActionListener,
 		color.setActionCommand("color");
 		m.add(color);
 		
-		JSlider speed = new JSlider();
-		speed.addChangeListener(this);
+		speedSlider = new JSlider();
+		speedSlider.addChangeListener(this);
+		m.add(speedSlider);
 
 		getContentPane().add(m, BorderLayout.NORTH);
 		getContentPane().add(line);
@@ -158,9 +160,9 @@ public class Display extends JFrame implements ActionListener,
 		Display.c = c;
 	}
 
-/*	@Override
+	@Override
 	public void stateChanged(ChangeEvent c) {
-		t.setDelay(c.getSource().);
+		t.setDelay(speedSlider.get);
 	}
-*/
+
 }

@@ -1,6 +1,9 @@
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Rectangle;
+import java.awt.Stroke;
 
 import javax.swing.*;
 
@@ -20,12 +23,15 @@ public class LineDisplay extends JPanel {
 	Point end = new Point(5,5);
 	private Line l = new Line(start,end);
 	int orientation;
+	int strokeWidth = 2;
+	Stroke stroke = new BasicStroke(strokeWidth);
 	
 	public void paintComponent(Graphics gr){
+		Graphics2D gr2 = (Graphics2D)gr;
 		super.paintComponent(gr);
+		gr2.setStroke(new BasicStroke(strokeWidth));
 		gr.setColor(Display.getC());
 		gr.drawLine(l.getEndPoints()[0].x,l.getEndPoints()[0].y,l.getEndPoints()[1].x,l.getEndPoints()[1].y);
-		//gr.drawLine(l.getEndPoints()[0].x,l.getEndPoints()[0].y, getWidth(), getHeight());
 		orientation = l.getOrientation();
 	}
 
@@ -35,6 +41,11 @@ public class LineDisplay extends JPanel {
 
 	public void setL(Line l) {
 		this.l = l;
+	}
+	
+	public void setStroke()
+	{
+		
 	}
 	
 	
