@@ -7,6 +7,7 @@ public class Polygon {
 		setOrientation(0);
 		this.center = center;
 		this.endPoints = endPoints;
+		this.tempEndPoints = endPoints;
 	}
 	
 	

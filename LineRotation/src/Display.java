@@ -1,21 +1,16 @@
 import java.awt.BorderLayout;
 import java.awt.event.*;
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
-import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ComponentEvent;
 import java.util.Random;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JMenuBar;
-import javax.swing.JPanel;
 import javax.swing.JSlider;
 import javax.swing.Timer;
 import javax.swing.event.ChangeEvent;
@@ -29,11 +24,12 @@ public class Display extends JFrame implements ActionListener,
 	 */
 	private static Color c = new Color(0,0,0);
 	private static final long serialVersionUID = 454055181523406363L;
-	int speed = 0;
-	Timer t = new Timer(speed, this);
-	Timer ti = new Timer(speed,this);
+	Timer t;	//clockwise timer
+	Timer ti; // counter-clockwise timer
+	int speedMax = 10; //max speed of rotating line
 	LineDisplay line = new LineDisplay();
 	JSlider speedSlider;
+	JSlider widthSlider;
 	
 
 	Display() {
@@ -46,10 +42,10 @@ public class Display extends JFrame implements ActionListener,
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		line.addComponentListener(this);
 
-		t.setActionCommand("timer");
-		ti.setActionCommand("rotatecc");
+
 
 		JMenuBar m = new JMenuBar();
+		JMenuBar mBottom = new JMenuBar();
 		JButton rotate = new JButton("Rotate Clockwise");
 		rotate.addActionListener(this);
 		rotate.setActionCommand("rotate");
@@ -70,12 +66,26 @@ public class Display extends JFrame implements ActionListener,
 		color.setActionCommand("color");
 		m.add(color);
 		
-		speedSlider = new JSlider();
+		JLabel speedLabel = new JLabel("Speed");
+		mBottom.add(speedLabel);
+		speedSlider = new JSlider(0,speedMax,5);
 		speedSlider.addChangeListener(this);
-		m.add(speedSlider);
+		mBottom.add(speedSlider);
+		
+		JLabel widthLabel = new JLabel("Line Width");
+		mBottom.add(widthLabel);
+		widthSlider = new JSlider(1,20,10);
+		widthSlider.addChangeListener(this);
+		mBottom.add(widthSlider);
+		
+		t = new Timer(speedSlider.getValue(),this);
+		ti = new Timer(speedSlider.getValue(),this);
+		t.setActionCommand("timer");
+		ti.setActionCommand("rotatecc");
 
 		getContentPane().add(m, BorderLayout.NORTH);
-		getContentPane().add(line);
+		getContentPane().add(line,BorderLayout.CENTER);
+		getContentPane().add(mBottom,BorderLayout.SOUTH);
 		pack();
 	}
 
@@ -86,18 +96,15 @@ public class Display extends JFrame implements ActionListener,
 		if (command.equals("timer")) {			
 			line.getL().rotate(1);
 			line.repaint();
-			System.out.println(line.getL().getEndPoints()[0].toString());
 		}
 		if (command.equals("rotatecc")) {
 			line.getL().rotate(-1);
 			line.repaint();
-			System.out.println(line.getL().getEndPoints()[0].toString());
 		}
 		
 		if (command.equals("rotate")) {
 			ti.stop();
 			t.start();
-			System.out.println("rotate");
 		}
 		
 		if(command.equals("cc")){
@@ -162,7 +169,10 @@ public class Display extends JFrame implements ActionListener,
 
 	@Override
 	public void stateChanged(ChangeEvent c) {
-		t.setDelay(speedSlider.getValue());
+		t.setDelay(speedMax - speedSlider.getValue());
+		ti.setDelay(speedMax - speedSlider.getValue());
+		line.stroke = new BasicStroke(widthSlider.getValue());
+		line.repaint();
 	}
 
 }

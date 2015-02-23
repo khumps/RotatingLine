@@ -23,15 +23,14 @@ public class LineDisplay extends JPanel {
 	Point end = new Point(5,5);
 	private Line l = new Line(start,end);
 	int orientation;
-	int strokeWidth = 2;
-	Stroke stroke = new BasicStroke(strokeWidth);
+	Stroke stroke = new BasicStroke(10);
 	
 	public void paintComponent(Graphics gr){
 		Graphics2D gr2 = (Graphics2D)gr;
 		super.paintComponent(gr);
-		gr2.setStroke(new BasicStroke(strokeWidth));
+		gr2.setStroke(stroke);
 		gr.setColor(Display.getC());
-		gr.drawLine(l.getEndPoints()[0].x,l.getEndPoints()[0].y,l.getEndPoints()[1].x,l.getEndPoints()[1].y);
+		gr.drawLine(l.getTempEndPoints()[0].x,l.getTempEndPoints()[0].y,l.getTempEndPoints()[1].x,l.getTempEndPoints()[1].y);
 		orientation = l.getOrientation();
 	}
 
@@ -42,12 +41,6 @@ public class LineDisplay extends JPanel {
 	public void setL(Line l) {
 		this.l = l;
 	}
-	
-	public void setStroke()
-	{
-		
-	}
-	
 	
 	
 }

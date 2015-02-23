@@ -1,5 +1,4 @@
 public class Line extends Polygon {
-
 	public Line(Point start, Point end) {
 		// Point center = new Point((start.x + end.x) / 2,(start.y + end.y) /
 		// 2);
@@ -10,11 +9,11 @@ public class Line extends Polygon {
 
 	public Line rotate(int degrees) {
 		super.setOrientation(super.getOrientation() + degrees);
-		double degreesR = Math.toRadians(degrees);
+		double degreesR = Math.toRadians(super.getOrientation());
 		Point a = this.pivot(degreesR);
 		Point b = this.aPivot(degreesR);
 		Point[] points = { a, b };
-		super.setEndPoints(points);
+		super.setTempEndPoints(points);
 		return new Line(a, b);
 
 	}
