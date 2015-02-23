@@ -16,10 +16,13 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
+import javax.swing.JSlider;
 import javax.swing.Timer;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 public class Display extends JFrame implements ActionListener,
-		ComponentListener {
+		ComponentListener, ChangeListener {
 
 	/**
 	 * 
@@ -30,7 +33,7 @@ public class Display extends JFrame implements ActionListener,
 	Timer t = new Timer(10, this);
 	Timer ti = new Timer(10,this);
 	LineDisplay line = new LineDisplay();
-	int inaccuracy = 0;
+	
 
 	Display() {
 
@@ -65,6 +68,9 @@ public class Display extends JFrame implements ActionListener,
 		color.addActionListener(this);
 		color.setActionCommand("color");
 		m.add(color);
+		
+		JSlider speed = new JSlider();
+		speed.addChangeListener(this);
 
 		getContentPane().add(m, BorderLayout.NORTH);
 		getContentPane().add(line);
@@ -152,4 +158,9 @@ public class Display extends JFrame implements ActionListener,
 		Display.c = c;
 	}
 
+/*	@Override
+	public void stateChanged(ChangeEvent c) {
+		t.setDelay(c.getSource().);
+	}
+*/
 }
