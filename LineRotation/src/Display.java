@@ -162,7 +162,7 @@ public class Display extends JFrame implements ActionListener,
 
 	@Override
 	public void stateChanged(ChangeEvent c) {
-		t.setDelay(speedSlider.get);
+		t.setDelay(speedSlider.getValue());
 	}
 
 }
