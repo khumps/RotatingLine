@@ -71,9 +71,6 @@ public class Display extends JFrame implements ActionListener,
 		pack();
 	}
 
-	public void drawLine() {
-		repaint();
-	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
