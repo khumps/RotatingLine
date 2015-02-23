@@ -65,11 +65,6 @@ public class Display extends JFrame implements ActionListener,
 		color.addActionListener(this);
 		color.setActionCommand("color");
 		m.add(color);
-		
-		JButton help = new JButton("Help");
-		help.addActionListener(this);
-		help.setActionCommand("help");
-		m.add(help);
 
 		getContentPane().add(m, BorderLayout.NORTH);
 		getContentPane().add(line);
@@ -116,9 +111,6 @@ public class Display extends JFrame implements ActionListener,
 			 c = new Color(rnd.nextInt(251) + 0, rnd.nextInt(251) +0, 
 					 rnd.nextInt(251) + 0);
 			 line.repaint();
-		}
-		
-		if(command.equals("help")){
 		}
 
 	}
