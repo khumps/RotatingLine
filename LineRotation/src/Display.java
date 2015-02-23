@@ -109,7 +109,7 @@ public class Display extends JFrame implements ActionListener,
 		if(command.equals("color")){
 			Random rnd = new Random();
 			 c = new Color(rnd.nextInt(251) + 0, rnd.nextInt(251) +0, 
-					 rnd.nextInt(251) + 0);
+					 rnd.nextInt(251) + 0);		 
 			 line.repaint();
 		}
 
