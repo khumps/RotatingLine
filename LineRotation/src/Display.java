@@ -26,7 +26,7 @@ public class Display extends JFrame implements ActionListener,
 	private static final long serialVersionUID = 454055181523406363L;
 	Timer t;	//clockwise timer
 	Timer ti; // counter-clockwise timer
-	int speedMax = 10; //max speed of rotating line
+	int speedMax = 5; //max speed of rotating line
 	LineDisplay line = new LineDisplay();
 	JSlider speedSlider;
 	JSlider widthSlider;
@@ -68,7 +68,7 @@ public class Display extends JFrame implements ActionListener,
 		
 		JLabel speedLabel = new JLabel("Speed");
 		mBottom.add(speedLabel);
-		speedSlider = new JSlider(0,speedMax,5);
+		speedSlider = new JSlider(1,speedMax,speedMax / 2);
 		speedSlider.addChangeListener(this);
 		mBottom.add(speedSlider);
 		
