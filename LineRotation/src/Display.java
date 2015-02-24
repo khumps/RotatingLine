@@ -26,8 +26,8 @@ public class Display extends JFrame implements ActionListener,
 	private static final long serialVersionUID = 454055181523406363L;
 	Timer t;	//clockwise timer
 	Timer ti; // counter-clockwise timer
-	int speedMax = 5; //max speed of rotating line
 	LineDisplay line = new LineDisplay();
+	int speed = 10;
 	JSlider speedSlider;
 	JSlider widthSlider;
 	
@@ -68,7 +68,7 @@ public class Display extends JFrame implements ActionListener,
 		
 		JLabel speedLabel = new JLabel("Speed");
 		mBottom.add(speedLabel);
-		speedSlider = new JSlider(1,speedMax,speedMax / 2);
+		speedSlider = new JSlider(1,speed,speed / 2);
 		speedSlider.addChangeListener(this);
 		mBottom.add(speedSlider);
 		
@@ -169,8 +169,8 @@ public class Display extends JFrame implements ActionListener,
 
 	@Override
 	public void stateChanged(ChangeEvent c) {
-		t.setDelay(speedMax - speedSlider.getValue());
-		ti.setDelay(speedMax - speedSlider.getValue());
+		t.setDelay(speed - speedSlider.getValue() + 1); //
+		ti.setDelay(speed - speedSlider.getValue() + 1);// + 1 prevents 0 delay which is ugly
 		line.stroke = new BasicStroke(widthSlider.getValue());
 		line.repaint();
 	}

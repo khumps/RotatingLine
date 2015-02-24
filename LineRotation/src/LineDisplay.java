@@ -16,7 +16,7 @@ public class LineDisplay extends JPanel {
 	private static final long serialVersionUID = 6883927989034504376L;
 	
 	
-	Rectangle lineCanvas;
+	//Rectangle lineCanvas;
 	int width = 60;
 	int height = 60;
 	Point start = new Point(0,0);
