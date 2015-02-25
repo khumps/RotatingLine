@@ -24,10 +24,10 @@ public class Display extends JFrame implements ActionListener,
 	 */
 	private static Color c = new Color(0,0,0);
 	private static final long serialVersionUID = 454055181523406363L;
-	Timer t;	//clockwise timer
-	Timer ti; // counter-clockwise timer
+	public Timer t;	//clockwise timer
+	public Timer ti; // counter-clockwise timer
 	LineDisplay line = new LineDisplay();
-	int speed = 10;
+	int speed = 50;
 	JSlider speedSlider;
 	JSlider widthSlider;
 	
@@ -68,7 +68,7 @@ public class Display extends JFrame implements ActionListener,
 		
 		JLabel speedLabel = new JLabel("Speed");
 		mBottom.add(speedLabel);
-		speedSlider = new JSlider(1,speed,speed / 2);
+		speedSlider = new JSlider(0,speed,speed / 2);
 		speedSlider.addChangeListener(this);
 		mBottom.add(speedSlider);
 		
@@ -93,7 +93,7 @@ public class Display extends JFrame implements ActionListener,
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		String command = e.getActionCommand();
-		if (command.equals("timer")) {			
+		if (command.equals("timer")) {		
 			line.getL().rotate(1);
 			line.repaint();
 		}
@@ -169,8 +169,8 @@ public class Display extends JFrame implements ActionListener,
 
 	@Override
 	public void stateChanged(ChangeEvent c) {
-		t.setDelay(speed - speedSlider.getValue() + 1); //
-		ti.setDelay(speed - speedSlider.getValue() + 1);// + 1 prevents 0 delay which is ugly
+		t.setDelay(speed - speedSlider.getValue()); //
+		ti.setDelay(speed - speedSlider.getValue());// + 1 prevents 0 delay which is ugly
 		line.stroke = new BasicStroke(widthSlider.getValue());
 		line.repaint();
 	}
