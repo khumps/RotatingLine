@@ -22,8 +22,9 @@ public class LineDisplay extends JPanel {
 	public void paintComponent(Graphics gr){
 		super.paintComponent(gr);
 		gr.setColor(c);
-		//gr.drawLine(l.getEndPoints()[0].x,l.getEndPoints()[0].y,l.getEndPoints()[1].x,l.getEndPoints()[1].y);
+		gr.drawLine(l.getEndPoints()[0].x,l.getEndPoints()[0].y,l.getEndPoints()[1].x,l.getEndPoints()[1].y);
 		gr.drawLine(l.getEndPoints()[0].x,l.getEndPoints()[0].y, getWidth(), getHeight());
+		gr.drawLine(0,0, l.getEndPoints()[1].x,l.getEndPoints()[1].y);
 	}
 
 	public Line getL() {
