@@ -27,8 +27,8 @@ public class Display extends JFrame implements ActionListener,
 	public Timer t;	//clockwise timer
 	public Timer ti; // counter-clockwise timer
 	LineDisplay line = new LineDisplay();
-	int speed = 50;
-	int rotateSpeed = 10;
+	int speed = 10;
+	int rotateSpeed = speed / 2;
 	JSlider speedSlider;
 	JSlider widthSlider;
 	
@@ -69,18 +69,27 @@ public class Display extends JFrame implements ActionListener,
 		
 		JLabel speedLabel = new JLabel("Speed");
 		mBottom.add(speedLabel);
-		speedSlider = new JSlider(0,speed,speed / 2);
+		speedSlider = new JSlider(speed * -1,speed,rotateSpeed);
 		speedSlider.addChangeListener(this);
+		speedSlider.setMajorTickSpacing(speed / 10);
+		speedSlider.setMinorTickSpacing(speed / 100);
+		speedSlider.setPaintTicks(true);
+		//speedSlider
 		mBottom.add(speedSlider);
 		
 		JLabel widthLabel = new JLabel("Line Width");
 		mBottom.add(widthLabel);
 		widthSlider = new JSlider(1,20,10);
 		widthSlider.addChangeListener(this);
+		widthSlider = new JSlider(speed * -1,speed,rotateSpeed);
+		widthSlider.addChangeListener(this);
+		widthSlider.setMajorTickSpacing(speed / 10);
+		widthSlider.setMinorTickSpacing(speed / 100);
+		widthSlider.setPaintTicks(true);
 		mBottom.add(widthSlider);
 		
-		t = new Timer(speedSlider.getValue(),this);
-		ti = new Timer(speedSlider.getValue(),this);
+		t = new Timer(10,this);
+		ti = new Timer(10,this);
 		t.setActionCommand("timer");
 		ti.setActionCommand("rotatecc");
 
@@ -170,8 +179,8 @@ public class Display extends JFrame implements ActionListener,
 
 	@Override
 	public void stateChanged(ChangeEvent c) {
-		t.setDelay(speed - speedSlider.getValue()); //
-		ti.setDelay(speed - speedSlider.getValue());// + 1 prevents 0 delay which is ugly
+		rotateSpeed = speedSlider.getValue(); //
+		rotateSpeed = speedSlider.getValue();// + 1 prevents 0 delay which is ugly
 		line.stroke = new BasicStroke(widthSlider.getValue());
 		line.repaint();
 	}
