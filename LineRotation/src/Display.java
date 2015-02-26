@@ -28,6 +28,7 @@ public class Display extends JFrame implements ActionListener,
 	public Timer ti; // counter-clockwise timer
 	LineDisplay line = new LineDisplay();
 	int speed = 50;
+	int rotateSpeed = 10;
 	JSlider speedSlider;
 	JSlider widthSlider;
 	
@@ -94,11 +95,11 @@ public class Display extends JFrame implements ActionListener,
 	public void actionPerformed(ActionEvent e) {
 		String command = e.getActionCommand();
 		if (command.equals("timer")) {		
-			line.getL().rotate(1);
+			line.getL().rotate(rotateSpeed);
 			line.repaint();
 		}
 		if (command.equals("rotatecc")) {
-			line.getL().rotate(-1);
+			line.getL().rotate(rotateSpeed * -1);
 			line.repaint();
 		}
 		
