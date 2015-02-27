@@ -19,7 +19,7 @@ public class Line extends Polygon
 	}
 
 	/**
-	 * 
+	 * rotates the Line about super.center
 	 * @param degrees the number of degrees the line will be rotated
 	 * @return the new Line that results from rotating the old Line
 	 */
@@ -35,7 +35,7 @@ public class Line extends Polygon
 	}
 
 	/**
-	 * 
+	 * pivots half of the Line about super.center
 	 * @param angle the angle(in degrees) that the line segment rotates
 	 * @return The new end Point of the line segment(not super.center)
 	 */
@@ -55,7 +55,7 @@ public class Line extends Polygon
 	}
 
 	/**
-	 * 
+	 * pivots half of the Line about super.center
 	 * @param angle the angle(in degrees) that the line segment rotates
 	 * @return The new end Point of the line segment(not super.center)
 	 */
@@ -74,10 +74,18 @@ public class Line extends Polygon
 		return new Point(endX, endY);
 	}
 
+	/**
+	 * 
+	 * @return The start Point of the Line
+	*/
 	public Point getStart() {
 		return super.endPoints[0];
 	}
 
+	/**
+	 * 
+	 * @return The end Point of the Line
+	 */
 	public Point getEnd() {
 		return super.endPoints[1];
 	}
