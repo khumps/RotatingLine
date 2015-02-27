@@ -1,4 +1,12 @@
+/**
+ * 
+ * @author Kevin Humphreys
+ *
+ */
 public class Polygon {
+	/**
+	 * <b>
+	 */
 	private final Point center;
 	protected Point[] endPoints;
 	protected Point[] tempEndPoints;
