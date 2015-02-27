@@ -69,7 +69,7 @@ public class Display extends JFrame implements ActionListener,
 		
 		JLabel speedLabel = new JLabel("Speed");
 		mBottom.add(speedLabel);
-		speedSlider = new JSlider(speed * -1,speed,rotateSpeed);
+		speedSlider = new JSlider(1,speed,rotateSpeed);
 		speedSlider.addChangeListener(this);
 		speedSlider.setMajorTickSpacing(speed / 10);
 		speedSlider.setMinorTickSpacing(speed / 100);
@@ -81,10 +81,10 @@ public class Display extends JFrame implements ActionListener,
 		mBottom.add(widthLabel);
 		widthSlider = new JSlider(1,20,10);
 		widthSlider.addChangeListener(this);
-		widthSlider = new JSlider(speed * -1,speed,rotateSpeed);
+		widthSlider = new JSlider(1,20,10);
 		widthSlider.addChangeListener(this);
-		widthSlider.setMajorTickSpacing(speed / 10);
-		widthSlider.setMinorTickSpacing(speed / 100);
+		widthSlider.setMajorTickSpacing(widthSlider.getMaximum() / 10);
+		widthSlider.setMinorTickSpacing(widthSlider.getMaximum() / 50);
 		widthSlider.setPaintTicks(true);
 		mBottom.add(widthSlider);
 		
