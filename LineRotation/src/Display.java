@@ -16,12 +16,29 @@ import javax.swing.Timer;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+/**
+ * 
+ * @author Vijay Jeevanandam
+ * @author Kevin Humpries
+ *
+ */
 public class Display extends JFrame implements ActionListener,
 		ComponentListener, ChangeListener {
 
 	/**
+	 * Data for the Display class.
+	 * Color c is the color of the line that is drawn.
+	 * Two timers created: 
+	 * Timer t is utilized to rotate the line clockwise
+	 * Timer ti is utilized to rotate the line counter-clockwise
+	 * LineDisplay Line is the line that was created in the LineDisplay class
+	 * int speed is the rotation speed of the line
+	 * int rotateSpeed is the initial rotation speed of the line
+	 * JSlider speedSlider: the slider that is used to change the speed of the line
+	 * JSlider widthSlider: the slider that is used to change the width of the line
 	 * 
 	 */
+
 	private static Color c = new Color(0,0,0);
 	private static final long serialVersionUID = 454055181523406363L;
 	public Timer t;	//clockwise timer
@@ -32,7 +49,15 @@ public class Display extends JFrame implements ActionListener,
 	JSlider speedSlider;
 	JSlider widthSlider;
 	
-
+	/**
+	 * The Display constructor:
+	 * Creates a new JFrame: <br>										
+	 * 			- Has a minimum size and a preferred size <br>
+	 * 			- Has several buttons: <br>
+	 * 				- Rotate Clockwise
+	 * 				
+	 * 			
+	 */
 	Display() {
 
 		
