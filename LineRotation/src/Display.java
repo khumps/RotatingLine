@@ -51,12 +51,10 @@ public class Display extends JFrame implements ActionListener,
 	
 	/**
 	 * The Display constructor:
-	 * Creates a new JFrame: <br>										
+	 * Creates a new JFrame <br>										
 	 * 			- Has a minimum size and a preferred size <br>
-	 * 			- Has several buttons: <br>
-	 * 				- Rotate Clockwise
-	 * 				
-	 * 			
+	 * 			- Has several buttons <br>
+	 * 			- Has 2 sliders	
 	 */
 	Display() {
 
@@ -126,6 +124,13 @@ public class Display extends JFrame implements ActionListener,
 
 
 	@Override
+	/**
+	 * actionPerformed method
+	 * Each button and timer has a different ActionCommand
+	 * Each time Action Event e is fired off, the specific 
+	 * ActionCommand in one of the if statements is triggered 
+	 * and the specific functions occur
+	 */
 	public void actionPerformed(ActionEvent e) {
 		String command = e.getActionCommand();
 		if (command.equals("timer")) {		
@@ -161,7 +166,12 @@ public class Display extends JFrame implements ActionListener,
 		}
 
 	}
-
+	
+	/**
+	 * The main method:
+	 * Creates a new Display object, sets that object visible
+	 * @param args
+	 */
 	public static void main(String[] args) {
 
 		Display line = new Display();
@@ -172,6 +182,10 @@ public class Display extends JFrame implements ActionListener,
 	}
 
 	@Override
+	/**
+	 * componentResized method
+	 * 
+	 */
 	public void componentResized(ComponentEvent e) {
 		line.orientation = line.getL().getOrientation();
 		line.height = line.getHeight();
