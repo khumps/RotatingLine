@@ -19,7 +19,10 @@ import javax.swing.event.ChangeListener;
 /**
  * 
  * @author Vijay Jeevanandam
- * @author Kevin Humpries
+ * @author Kevin Humphreys
+ * <br>
+ * <br>
+ * A Display class that creates a JFrame of a rotating line with several functionalities
  *
  */
 public class Display extends JFrame implements ActionListener,
@@ -54,7 +57,7 @@ public class Display extends JFrame implements ActionListener,
 	 * Creates a new JFrame <br>										
 	 * 			- Has a minimum size and a preferred size <br>
 	 * 			- Has several buttons <br>
-	 * 			- Has 2 sliders	
+	 * 			- Uses 2 sliders	
 	 */
 	Display() {
 
@@ -183,7 +186,12 @@ public class Display extends JFrame implements ActionListener,
 
 	@Override
 	/**
-	 * componentResized method
+	 * componentResized method:
+	 * Saves the current line orientation
+	 * Gets the new screen height and width
+	 * Creates a new point at that width and height
+	 * The new line is drawn with the old start point and the new end point
+	 * Rotates the to the previously saved orientation
 	 * 
 	 */
 	public void componentResized(ComponentEvent e) {
@@ -197,26 +205,49 @@ public class Display extends JFrame implements ActionListener,
 	}
 
 	@Override
+	/**
+	 * Must be overridden
+	 */
 	public void componentHidden(ComponentEvent arg0) {
 	}
 
 	@Override
+	/**
+	 * Must be overridden
+	 */
 	public void componentMoved(ComponentEvent arg0) {
 	}
 
 	@Override
+	/**
+	 * Must be overridden
+	 */
 	public void componentShown(ComponentEvent arg0) {
 	}
 	
+	/**
+	 * Getter for the color of the line
+	 * @return Color of the line "c"
+	 */
 	public static Color getC(){
 		return c;
 	}
 	
+	/**
+	 * Setter for the color of the line so that it can be modified
+	 * @param Color of the line "c"
+	 */
 	public static void setC(Color c){
 		Display.c = c;
 	}
 
 	@Override
+	/**
+	 * stateChanged method:
+	 * Utilizes a changeListener and changeEvent for the speed and width sliders
+	 * Line is repainted after the change in speed or width is made
+	 * 
+	 */
 	public void stateChanged(ChangeEvent c) {
 		rotateSpeed = speedSlider.getValue(); //
 		rotateSpeed = speedSlider.getValue();// + 1 prevents 0 delay which is ugly
