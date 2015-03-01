@@ -90,10 +90,18 @@ public class Line extends Polygon
 		return super.endPoints[1];
 	}
 
+	/**
+	 * 
+	 * @param start The new start Point of the Line
+	 */
 	public void setStart(Point start) {
 		super.endPoints[0] = start;
 	}
 
+	/**
+	 * 
+	 * @param end The new end Point of the Line
+	 */
 	public void setEnd(Point end) {
 		super.endPoints[0] = end;
 	}
